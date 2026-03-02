@@ -20,7 +20,11 @@ A convolutional neural network (CNN) built with PyTorch that classifies images f
 
 ```
 neural_network/
-├── main.py              # Main training and evaluation script
+├── main.py              # Orchestration entrypoint — setup, train, save, evaluate
+├── net.py               # CNN model definition, training loop, and inference
+├── data_loaders.py      # CIFAR-10 dataset setup and DataLoader construction
+├── logger.py            # Structured logging configuration
+├── utils.py             # Visualization utilities (imshow)
 ├── cifar_net.pth        # Saved model weights (generated after training)
 ├── test_images.png      # Sample test images (generated after training)
 ├── data/                # CIFAR-10 dataset (auto-downloaded)
@@ -35,7 +39,6 @@ neural_network/
 - PyTorch
 - torchvision
 - matplotlib
-- numpy
 
 Install dependencies with:
 
@@ -103,7 +106,7 @@ Accuracy for class: bird  is 41.5 %
 
 ## Logging
 
-The project uses Python's built-in `logging` module with `DEBUG` level output, showing timestamps, log level, and function name for every key step in the pipeline.
+The project uses Python's built-in `logging` module with `DEBUG` level output, configured via `logger.py`. All output flows through structured logging (no raw `print()` calls), showing timestamps, log level, and function name for every key step in the pipeline.
 
 ---
 
